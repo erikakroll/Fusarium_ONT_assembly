@@ -20,10 +20,10 @@ module load Miniconda3
 source activate liftoff
 #############################################################
 
-reference='/home/data/fus_sysbio_ek2020/EK_fg_pangenome/CML3066.v2_assembly/GCA_900073075.1_CML3066.v2_genomic.fna'
+reference='/home/data/fus_sysbio_ek2020/EK_fg_pangenome/PH1/GCA_900044135.1_GZPH1RResV1_genomic.fna'
 target='/home/data/fus_sysbio_ek2020/EK_fg_pangenome/Nanopore_assembly/Hifiasm/CML3064_HERRO_Chr4_telo.fixed.T2T.fasta.masked'
-gff='/home/data/fus_sysbio_ek2020/EK_fg_pangenome/CML3066.v2_assembly/Merge_gene_GCA_900073075.1_CML3066.v2_genomic_with_ids.gtf'
-FROMSTUB='REFORMAT_fgCML3066'
+gff='/home/data/fus_sysbio_ek2020/EK_fg_pangenome/PH1/GCA_900044135.1_GZPH1RResV1_genomic_with_ids.gtf'
+FROMSTUB='REFORMAT_fgPH1'
 TOSTUB='fgCML3064'
 OUTDIR=/home/data/fus_sysbio_ek2020/EK_fg_pangenome/Nanopore_annotation/CML3064/lift_off
  

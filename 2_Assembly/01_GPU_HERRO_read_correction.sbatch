@@ -5,12 +5,12 @@
 #SBATCH --cpus-per-task=32
 #SBATCH --nodes=2
 #SBATCH --gres=gpu:4
-#SBATCH --mem=1000G
+#SBATCH --mem=500G
 #SBATCH --partition=gpu
 #SBATCH --time=7-00:00:00
 #SBATCH --qos=long
 #SBATCH --mail-type=END,FAIL
-#SBATCH --array=0-4
+#SBATCH --array=0-8
 #SBATCH --mail-user=erika.kroll@rothamsted.ac.uk
 
 # Load miniconda
@@ -28,6 +28,8 @@ FILES=("$IN_DIR"/*.fastq)
 FASTQ="${FILES[$SLURM_ARRAY_TASK_ID]}"
 BASENAME=$(basename "$FASTQ" _trimmed.fastq)
 
+echo "running: ${BASENAME}"
+
 # Variables declaration
 
 MODEL_DNA=/home/data/fus_sysbio_ek2020/Tools/dorado-0.7.2-linux-x64/herro-v1
@@ -39,6 +41,6 @@ mkdir -p "$OUT_DIR"
 dorado correct \
 -x "cuda:all" \
 --infer-threads 32 \
--m "$MODEL_DNA" "$FASTQ" > "$OUT_DIR/${BASENAME}_corrected.fasta"
+-m "$MODEL_DNA" "size_filtered/over10_${BASENAME}.fastq" > "$OUT_DIR/${BASENAME}_corrected.fasta"
 
 
